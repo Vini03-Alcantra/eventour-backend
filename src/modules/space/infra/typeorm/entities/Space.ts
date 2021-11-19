@@ -15,5 +15,7 @@ class Space {
     @Column({name: "available_space"})
     availableSpace: number;
     @Column({name: "id_owner"})
-    idOwner: Owner[];
+    idOwner: Owner;
 }
+
+export {Space}

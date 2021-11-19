@@ -2,8 +2,9 @@
     "type":"postgres",
     "port": 5433,
     "host": "localhost",
-    "usernmae": "vinicius",
+    "username": "vinicius",
     "password": "123456",
+    "database": "eventour",
     "migrations": ["./src/shared/infra/typeorm/migrations/*.ts"],
     "entities": ["./src/modules/**/entites/*.ts"],
     "cli": {
