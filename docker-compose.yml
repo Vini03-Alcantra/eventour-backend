@@ -1,0 +1,32 @@
+version: "3.7"
+
+services: 
+  dbeventour:
+    image: postgres
+    container_name: eventour
+    restart: always
+    ports: 
+      - 5433:5432
+    environment:
+      - POSTGRES_USER=vinicius
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=eventour
+    volumes:
+        - pgdata:/data/postgres
+
+  appeventour: 
+    build: .
+    container_name: eventournode
+    restart: always
+    ports: 
+      - 3003:3002
+    volumes:
+      - ./usr/app
+    links:
+      - dbeventour
+    depends_on:
+      - dbeventour
+
+volumes:
+    pgdata:
+      driver: local

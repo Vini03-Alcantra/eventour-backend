@@ -1,0 +1,12 @@
+{
+    "type":"postgres",
+    "port": 5433,
+    "host": "localhost",
+    "usernmae": "vinicius",
+    "password": "123456",
+    "migrations": ["./src/shared/infra/typeorm/migrations/*.ts"],
+    "entities": ["./src/modules/**/entites/*.ts"],
+    "cli": {
+        "migrationsDir":"./src/shared/infra/typeorm/migrations"
+    }
+}
