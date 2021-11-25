@@ -1,32 +1,32 @@
 version: "3.7"
 
-services: 
-  dbeventour:
+services:
+  eventourdb: #ESSE É O NOME DO SERVICE QUE DEVE ESTAR NO ARQUIVO DE CRIAÇÃO DE CONEXÃO
     image: postgres
-    container_name: eventour
+    container_name: database_eventour
     restart: always
     ports: 
-      - 5433:5432
+      - 5532:5432
     environment:
       - POSTGRES_USER=vinicius
       - POSTGRES_PASSWORD=123456
       - POSTGRES_DB=eventour
     volumes:
-        - pgdata:/data/postgres
+      - pgdata:/data/postgreseventour
 
-  appeventour: 
+  eventourapp:
     build: .
-    container_name: eventournode
+    container_name: appeventour
     restart: always
     ports: 
-      - 3003:3002
+      - 3010:3010
     volumes:
       - ./usr/app
     links:
-      - dbeventour
+      - eventourdb
     depends_on:
-      - dbeventour
+      - eventourdb   
 
 volumes:
-    pgdata:
-      driver: local
+  pgdata:
+    driver: local
